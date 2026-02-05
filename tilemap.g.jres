@@ -1,9 +1,112 @@
 {
-    "tile1": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "transparency16": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true
+    },
+    "tile2": {
+        "data": "hwQQABAAAAD//////////x8RERERERHxHxEREREREfEfERERERER8R8RERERERHxHxEREREREfEfERERERER8R8RERERERHxHxEREREREfEfERERERER8R8RERERERHxHxEREREREfEfERERERER8R8RERERERHxHxEREREREfH//////////w==",
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
-        "displayName": "myTile"
+        "displayName": "Empty spot"
+    },
+    "tile1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "Right side"
+    },
+    "tile3": {
+        "data": "hwQQABAAAAAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8A==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "Bottom side"
+    },
+    "tile4": {
+        "data": "hwQQABAAAAD//////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "Left side"
+    },
+    "tile5": {
+        "data": "hwQQABAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAPAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "Top side"
+    },
+    "tile13": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAsAAAsLsAAAC7CwC7uwsAsLu7sLu7uwCwC7u7u7C7C7ALu7sLALsLsAu7uwsAuwuwC7u7u7C7C7C7u7C7u7sAALsLALu7CwAAsAAAsLsAAAAAAAAACwAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "8"
+    },
+    "tile12": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAA4O4AAAAAAA7g7gAAAADgDuDuAAAAAO4O4O4AAADu7gDg7gAA4O4OAODuAADu7gAA4O4A4O4AAADg7uDuDgAAAODu7u4AAAAA4O7uDgAAAADg7g4AAAAAAODuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "7"
+    },
+    "tile11": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoKqqqgAAAACqqqqqCgAAoKqqqqoKAACqqgoAoAoAoKqgCgCgCgCqCqAKAKAKoKoAoAoAoAqgCgCgCgCgCqAAAKAKAKAKAAAAoAoAoAoAAACgqqqqCgAAAACqqqoAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "6"
+    },
+    "tile10": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAMDMzMwMAMAMwMzMzAwAwAzADADADADADMAMAMAMAMAMwAwAwAwAwAzADADADADADMAMAMAMAMAMwAwAwAwAwAzADADADADADMAMAMAMAMAMwAwAwMzMzAzADAAAzMzMAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "5"
+    },
+    "tile9": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAQEREREQAAABARERERAAAAAAAAABEAAAAAAAAAEQAAAAAAAAARAAAAAAAAABEAAAAQERERERERARAREREREREBAAAAABEAAAAAAAAAEQAAAAAAAAARAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "4"
+    },
+    "tile8": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAICIAAAAAIgIgIgAAAAAiAiAiAAAAACICICIAIAIAIgIgIgAgAgAiAiAiACACACICICIAIAIAIgIgIgAgAgAiAiAiACACACICICIiIiIiIgIgIiIiIiIiAgAiIgIgIiIAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "3"
+    },
+    "tile7": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAHcAAAAAdwdwdwAAAHB3B3B3AAAAd3cHcAcAAHB3cAdwBwAAdwdwB3AHAHB3AHAHcAcAdwcAcAdwd3d3AABwB3B3dwcAAHAHAHd3AAAAcAcAAAAAAABwBwAAAAAAAHAHAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "2"
+    },
+    "tile6": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAgAAAAAAACACAAAgAAAAIAIAACIAAAAgAgAgIgAAACACICIiIiIiIgIgIiIiIiIiAiAiIiIiIiICAAAAAAAAIAIAAAAAAAAgAgAAAAAAACACAAAAAAAAIAIAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "1"
+    },
+    "tile15": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAA8P///////w/w////////DwAiIiICAAAAACIiIgIAAAAAICIiAAAAAAAgIiIAAAAAAAAiAgAAAAAAACICAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "flag"
+    },
+    "tile14": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA8AAAAAAAAADwAAAAAAD///Dw8AAADw////AAAAAP8R//8PAAAA/xH//w8A8P///////w8AAP////8PAAAA/////w8AAADw////AAAAAA///w8PAAAAAAAPAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "mine"
+    },
+    "level1": {
+        "id": "level1",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAwYTAwMDcwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAzMDMwMzAzMDMwMzAwMDAwMDAyMDEwMTAxMDEwMTAxMDQwMDAwMDIwMTAxMDEwMTAxMDEwNDAwMDAwMjAxMDEwMTAxMDEwMTA0MDAwMDAyMDEwMTAxMDEwMTAxMDQwMDAwMDAwNTA1MDUwNTA1MDUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
+        "tileset": [
+            "myTiles.transparency16",
+            "myTiles.tile2",
+            "myTiles.tile1",
+            "myTiles.tile3",
+            "myTiles.tile4",
+            "myTiles.tile5"
+        ],
+        "displayName": "Main screen"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
