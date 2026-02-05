@@ -3,8 +3,6 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const transparency16 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile2 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile1 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile3 = image.ofBuffer(hex``);
@@ -32,11 +30,15 @@ namespace myTiles {
     export const tile15 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile14 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile16 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile2 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
             case "Main screen":
-            case "level1":return tiles.createTilemap(hex`0a00070000000000000000000000000003030303030300000002010101010101040000020101010101010400000201010101010104000002010101010101040000000505050505050000`, img`
+            case "level1":return tiles.createTilemap(hex`0a00070000000000000000000000000002020202020200000001050505050505030000010505050505050300000105050505050503000001050505050505030000000404040404040000`, img`
 . . . . . . . . . . 
 . . . . . . . . . . 
 . . . . . . . . . . 
@@ -44,7 +46,7 @@ namespace myTiles {
 . . . . . . . . . . 
 . . . . . . . . . . 
 . . . . . . . . . . 
-`, [myTiles.transparency16,myTiles.tile2,myTiles.tile1,myTiles.tile3,myTiles.tile4,myTiles.tile5], TileScale.Sixteen);
+`, [myTiles.transparency16,myTiles.tile1,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile16], TileScale.Sixteen);
         }
         return null;
     })
@@ -52,8 +54,6 @@ namespace myTiles {
     helpers._registerFactory("tile", function(name: string) {
         switch(helpers.stringTrim(name)) {
             case "transparency16":return transparency16;
-            case "Empty spot":
-            case "tile2":return tile2;
             case "Right side":
             case "tile1":return tile1;
             case "Bottom side":
@@ -82,6 +82,10 @@ namespace myTiles {
             case "tile15":return tile15;
             case "mine":
             case "tile14":return tile14;
+            case "Covered tile":
+            case "tile16":return tile16;
+            case "Empty tile":
+            case "tile2":return tile2;
         }
         return null;
     })
