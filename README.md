@@ -3,6 +3,15 @@
 
 > Open this page at [https://ellinet13.github.io/makecode-arcade-minesweeper/](https://ellinet13.github.io/makecode-arcade-minesweeper/)
 
+## Use as Extension
+
+This repository can be added as an **extension** in MakeCode.
+
+* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
+* click on **New Project**
+* click on **Extensions** under the gearwheel menu
+* search for **https://github.com/ellinet13/makecode-arcade-minesweeper** and import
+
 ## Edit this project
 
 To edit this repository in MakeCode.
