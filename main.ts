@@ -10,6 +10,9 @@ function is_in_game_area (location: tiles.Location) {
     return false
 }
 function A () {
+    if (!(allowedToPlay)) {
+        return
+    }
     if (!(minesSpawnedBool)) {
         place_mines()
         minesSpawnedBool = true
@@ -18,7 +21,7 @@ function A () {
     findMines = sprites.create(assets.image`nothing`, SpriteKind.Player)
     findMines.z = -99999
     tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
-    for (let index = 0; index <= 4; index++) {
+    for (let index = 0; index <= 8; index++) {
         if (index == 0) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
         } else if (index == 1) {
@@ -27,6 +30,20 @@ function A () {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
         } else if (index == 3) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
+        } else if (index == 4) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+        } else if (index == 5) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
+        } else if (index == 6) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+        } else if (index == 7) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
+        } else if (index == 8) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
         }
         for (let value of sprites.allOfKind(SpriteKind.Mine)) {
             if (findMines.overlapsWith(value)) {
@@ -56,8 +73,18 @@ function A () {
     tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
     for (let value of sprites.allOfKind(SpriteKind.Mine)) {
         if (findMines.overlapsWith(value)) {
+            allowedToPlay = false
             sprites.destroy(value)
             tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`mine`)
+            music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
+            for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+                pause(500)
+                tiles.setTileAt(value.tilemapLocation(), assets.tile`mine`)
+                sprites.destroy(value)
+                music.play(downSound, music.PlaybackMode.InBackground)
+            }
+            pause(2000)
+            game.gameOver(false)
         }
     }
     sprites.destroy(findMines)
@@ -84,6 +111,9 @@ function place_mine () {
     }
 }
 function B () {
+    if (!(allowedToPlay)) {
+        return
+    }
     tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)
 }
 browserEvents.onMouseMove(function (x, y) {
@@ -105,8 +135,11 @@ let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
 let minesSpawnedBool = false
+let downSound: music.SoundEffect = null
 let realPlayerSprite: Sprite = null
 let visiblePlayerSprite: Sprite = null
+let allowedToPlay = false
+allowedToPlay = false
 scene.setBackgroundImage(assets.image`background`)
 tiles.setCurrentTilemap(tilemap`Main screen`)
 visiblePlayerSprite = sprites.create(assets.image`player`, SpriteKind.Player)
@@ -115,7 +148,14 @@ realPlayerSprite = sprites.create(assets.image`realplayer`, SpriteKind.Player)
 tiles.placeOnTile(realPlayerSprite, tiles.getTileLocation(2, 2))
 controller.moveSprite(realPlayerSprite)
 browserEvents.setCursorVisible(false)
+game.setGameOverEffect(false, effects.dissolve)
+game.setGameOverEffect(true, effects.none)
+game.setGameOverScoringType(game.ScoringType.HighScore)
+downSound = music.createSoundEffect(WaveShape.Noise, 3757, 1, 255, 0, 1000, SoundExpressionEffect.Vibrato, InterpolationCurve.Logarithmic)
+let explodeSound = music.createSoundEffect(WaveShape.Noise, 3757, 3657, 255, 0, 1000, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic)
+game.setGameOverPlayable(false, explodeSound, false)
 minesSpawnedBool = false
+allowedToPlay = true
 forever(function () {
     if (is_in_game_area(realPlayerSprite.tilemapLocation())) {
         tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
