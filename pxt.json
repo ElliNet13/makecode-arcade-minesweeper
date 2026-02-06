@@ -2,7 +2,8 @@
     "name": "Minesweeper",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "browser-events": "*"
     },
     "files": [
         "main.blocks",
