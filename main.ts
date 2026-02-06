@@ -1,7 +1,6 @@
 namespace SpriteKind {
     export const Mine = SpriteKind.create()
 }
-let list = 0
 function is_in_game_area (location: tiles.Location) {
     if (location.column > 1 && location.column < 8) {
         if (location.row > 1 && location.row < 6) {
@@ -25,7 +24,7 @@ function A () {
         } else if (index == 3) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
         }
-        for (let value of sprites.allOfKind(list)) {
+        for (let value of sprites.allOfKind(SpriteKind.Mine)) {
             if (findMines.overlapsWith(value)) {
                 howManyMines += 1
             }
