@@ -83,7 +83,7 @@ function A () {
                 sprites.destroy(value)
                 music.play(downSound, music.PlaybackMode.InBackground)
             }
-            pause(2000)
+            pause(3500)
             game.gameOver(false)
         }
     }
