@@ -10,6 +10,10 @@ function is_in_game_area (location: tiles.Location) {
     return false
 }
 function A () {
+    if (!(minesSpawnedBool)) {
+        place_mines()
+        minesSpawnedBool = true
+    }
     howManyMines = 0
     findMines = sprites.create(assets.image`nothing`, SpriteKind.Player)
     findMines.z = -99999
@@ -68,6 +72,10 @@ function place_mine () {
     currentMine = sprites.create(assets.image`nothing`, SpriteKind.Mine)
     tiles.placeOnRandomTile(currentMine, assets.tile`Covered tile`)
     currentMine.z = -99999
+    if (currentMine.overlapsWith(visiblePlayerSprite)) {
+        sprites.destroy(currentMine)
+        place_mine()
+    }
     for (let value of sprites.allOfKind(SpriteKind.Mine)) {
         if (currentMine.overlapsWith(value)) {
             sprites.destroy(currentMine)
@@ -96,6 +104,7 @@ browserEvents.MouseRight.onEvent(browserEvents.MouseButtonEvent.Pressed, functio
 let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
+let minesSpawnedBool = false
 let realPlayerSprite: Sprite = null
 let visiblePlayerSprite: Sprite = null
 scene.setBackgroundImage(assets.image`background`)
@@ -106,7 +115,7 @@ realPlayerSprite = sprites.create(assets.image`realplayer`, SpriteKind.Player)
 tiles.placeOnTile(realPlayerSprite, tiles.getTileLocation(2, 2))
 controller.moveSprite(realPlayerSprite)
 browserEvents.setCursorVisible(false)
-place_mines()
+minesSpawnedBool = false
 forever(function () {
     if (is_in_game_area(realPlayerSprite.tilemapLocation())) {
         tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
