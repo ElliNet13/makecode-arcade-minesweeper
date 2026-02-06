@@ -11,22 +11,6 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile5 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile13 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile12 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile11 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile10 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile9 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile8 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile7 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile6 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile16 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile2 = image.ofBuffer(hex``);
@@ -34,6 +18,22 @@ namespace myTiles {
     export const tile15 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile14 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile6 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile7 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile8 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile9 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile11 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile12 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile13 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile10 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -62,22 +62,6 @@ namespace myTiles {
             case "tile4":return tile4;
             case "Top side":
             case "tile5":return tile5;
-            case "8":
-            case "tile13":return tile13;
-            case "7":
-            case "tile12":return tile12;
-            case "6":
-            case "tile11":return tile11;
-            case "5":
-            case "tile10":return tile10;
-            case "4":
-            case "tile9":return tile9;
-            case "3":
-            case "tile8":return tile8;
-            case "2":
-            case "tile7":return tile7;
-            case "1":
-            case "tile6":return tile6;
             case "Covered tile":
             case "tile16":return tile16;
             case "Empty tile":
@@ -86,6 +70,22 @@ namespace myTiles {
             case "tile15":return tile15;
             case "mine":
             case "tile14":return tile14;
+            case "1":
+            case "tile6":return tile6;
+            case "2":
+            case "tile7":return tile7;
+            case "3":
+            case "tile8":return tile8;
+            case "4":
+            case "tile9":return tile9;
+            case "6":
+            case "tile11":return tile11;
+            case "7":
+            case "tile12":return tile12;
+            case "8":
+            case "tile13":return tile13;
+            case "5":
+            case "tile10":return tile10;
         }
         return null;
     })

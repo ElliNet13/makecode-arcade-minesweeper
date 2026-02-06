@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const Mine = SpriteKind.create()
 }
+let list = 0
 function is_in_game_area (location: tiles.Location) {
     if (location.column > 1 && location.column < 8) {
         if (location.row > 1 && location.row < 6) {
@@ -10,7 +11,53 @@ function is_in_game_area (location: tiles.Location) {
     return false
 }
 function A () {
-    tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`Empty tile`)
+    howManyMines = 0
+    findMines = sprites.create(assets.image`nothing`, SpriteKind.Player)
+    findMines.z = -99999
+    tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+    for (let index = 0; index <= 4; index++) {
+        if (index == 0) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+        } else if (index == 1) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
+        } else if (index == 2) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
+        } else if (index == 3) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
+        }
+        for (let value of sprites.allOfKind(list)) {
+            if (findMines.overlapsWith(value)) {
+                howManyMines += 1
+            }
+        }
+    }
+    if (howManyMines == 0) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`Empty tile`)
+    } else if (howManyMines == 1) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`1`)
+    } else if (howManyMines == 2) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`2`)
+    } else if (howManyMines == 3) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`3`)
+    } else if (howManyMines == 4) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`4`)
+    } else if (howManyMines == 5) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`5`)
+    } else if (howManyMines == 6) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`6`)
+    } else if (howManyMines == 7) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`7`)
+    } else if (howManyMines == 8) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`8`)
+    }
+    tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
+    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+        if (findMines.overlapsWith(value)) {
+            sprites.destroy(value)
+            tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`mine`)
+        }
+    }
+    sprites.destroy(findMines)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     B()
@@ -21,6 +68,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 function place_mine () {
     currentMine = sprites.create(assets.image`nothing`, SpriteKind.Mine)
     tiles.placeOnRandomTile(currentMine, assets.tile`Covered tile`)
+    currentMine.z = -99999
     for (let value of sprites.allOfKind(SpriteKind.Mine)) {
         if (currentMine.overlapsWith(value)) {
             sprites.destroy(currentMine)
@@ -47,6 +95,8 @@ browserEvents.MouseRight.onEvent(browserEvents.MouseButtonEvent.Pressed, functio
     B()
 })
 let currentMine: Sprite = null
+let findMines: Sprite = null
+let howManyMines = 0
 let realPlayerSprite: Sprite = null
 let visiblePlayerSprite: Sprite = null
 scene.setBackgroundImage(assets.image`background`)
