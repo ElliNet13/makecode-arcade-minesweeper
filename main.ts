@@ -28,5 +28,9 @@ tiles.placeOnTile(realPlayerSprite, tiles.getTileLocation(0, 0))
 controller.moveSprite(realPlayerSprite)
 browserEvents.setCursorVisible(false)
 forever(function () {
-    tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
+    if (realPlayerSprite.tilemapLocation().column > 1 && realPlayerSprite.tilemapLocation().column < 8) {
+        if (realPlayerSprite.tilemapLocation().row > 1 && realPlayerSprite.tilemapLocation().row < 6) {
+            tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
+        }
+    }
 })
