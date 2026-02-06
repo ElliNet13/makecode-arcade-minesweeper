@@ -13,6 +13,9 @@ function A () {
     if (!(allowedToPlay)) {
         return
     }
+    if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)) {
+        return
+    }
     if (!(minesSpawnedBool)) {
         place_mines()
         minesSpawnedBool = true
@@ -114,7 +117,11 @@ function B () {
     if (!(allowedToPlay)) {
         return
     }
-    tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)
+    if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)
+    } else if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)) {
+        tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)
+    }
 }
 browserEvents.onMouseMove(function (x, y) {
     realPlayerSprite.setPosition(x, y)
