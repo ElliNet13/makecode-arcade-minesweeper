@@ -113,6 +113,7 @@ function A () {
         }
     }
     sprites.destroy(findMines)
+    info.changeScoreBy(100)
     Win_check()
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -184,12 +185,13 @@ controller.moveSprite(realPlayerSprite)
 browserEvents.setCursorVisible(false)
 game.setGameOverEffect(false, effects.dissolve)
 game.setGameOverEffect(true, effects.none)
-game.setGameOverScoringType(game.ScoringType.HighScore)
+game.setGameOverScoringType(game.ScoringType.None)
 downSound = music.createSoundEffect(WaveShape.Noise, 3757, 1, 255, 0, 1000, SoundExpressionEffect.Vibrato, InterpolationCurve.Logarithmic)
 let explodeSound = music.createSoundEffect(WaveShape.Noise, 3757, 3657, 255, 0, 1000, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic)
 game.setGameOverPlayable(false, explodeSound, false)
 minesSpawnedBool = false
 allowedToPlay = true
+info.setScore(0)
 forever(function () {
     if (is_in_game_area(realPlayerSprite.tilemapLocation())) {
         tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
