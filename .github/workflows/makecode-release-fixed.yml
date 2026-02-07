@@ -3,7 +3,7 @@ name: MakeCode Arcade Release Fixed
 on: 
   release:
     types:
-      - created
+      - published
 jobs:
   build:
 
