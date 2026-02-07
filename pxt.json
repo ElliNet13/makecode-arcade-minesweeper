@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "browser-events": "*"
+        "browser-events": "*",
+        "pxt-button-combos": "github:jwunderl/pxt-button-combos#v0.0.24"
     },
     "files": [
         "main.blocks",

@@ -1,6 +1,28 @@
 namespace SpriteKind {
     export const Mine = SpriteKind.create()
 }
+function Win_check () {
+    winCheckBool = true
+    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+        if (!(tiles.tileAtLocationEquals(value.tilemapLocation(), assets.tile`flag`))) {
+            winCheckBool = false
+        }
+    }
+    if (!(winCheckBool)) {
+        return
+    }
+    for (let index = 0; index <= 3; index++) {
+        for (let index2 = 0; index2 <= 5; index2++) {
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2 + 2, index + 2), assets.tile`Covered tile`)) {
+                winCheckBool = false
+            }
+        }
+    }
+    if (!(winCheckBool)) {
+        return
+    }
+    game.gameOver(true)
+}
 function is_in_game_area (location: tiles.Location) {
     if (location.column > 1 && location.column < 8) {
         if (location.row > 1 && location.row < 6) {
@@ -13,7 +35,7 @@ function A () {
     if (!(allowedToPlay)) {
         return
     }
-    if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)) {
+    if (!(tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`))) {
         return
     }
     if (!(minesSpawnedBool)) {
@@ -91,9 +113,16 @@ function A () {
         }
     }
     sprites.destroy(findMines)
+    Win_check()
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     B()
+})
+controller.combos.attachCombo("uuddlr", function () {
+    game.splash("uuddlr")
+    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+        value.startEffect(effects.fire)
+    }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     A()
@@ -102,16 +131,6 @@ function place_mine () {
     currentMine = sprites.create(assets.image`nothing`, SpriteKind.Mine)
     tiles.placeOnRandomTile(currentMine, assets.tile`Covered tile`)
     currentMine.z = -99999
-    if (currentMine.overlapsWith(visiblePlayerSprite)) {
-        sprites.destroy(currentMine)
-        place_mine()
-    }
-    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
-        if (currentMine.overlapsWith(value)) {
-            sprites.destroy(currentMine)
-            place_mine()
-        }
-    }
 }
 function B () {
     if (!(allowedToPlay)) {
@@ -121,7 +140,14 @@ function B () {
         tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)
     } else if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)) {
         tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)
+        for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+            if (visiblePlayerSprite.overlapsWith(value)) {
+                let mySprite: Sprite = null
+                effects.clearParticles(mySprite)
+            }
+        }
     }
+    Win_check()
 }
 browserEvents.onMouseMove(function (x, y) {
     realPlayerSprite.setPosition(x, y)
@@ -141,6 +167,7 @@ browserEvents.MouseRight.onEvent(browserEvents.MouseButtonEvent.Pressed, functio
 let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
+let winCheckBool = false
 let minesSpawnedBool = false
 let downSound: music.SoundEffect = null
 let realPlayerSprite: Sprite = null
