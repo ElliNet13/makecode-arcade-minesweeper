@@ -147,14 +147,8 @@ function B () {
         tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)
     } else if (tiles.tileAtLocationEquals(visiblePlayerSprite.tilemapLocation(), assets.tile`Covered tile`)) {
         tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`flag`)
-        for (let value of sprites.allOfKind(SpriteKind.Mine)) {
-            if (visiblePlayerSprite.overlapsWith(value)) {
-                let mySprite: Sprite = null
-                effects.clearParticles(mySprite)
-            }
-        }
+        Win_check()
     }
-    Win_check()
 }
 browserEvents.onMouseMove(function (x, y) {
     realPlayerSprite.setPosition(x, y)
