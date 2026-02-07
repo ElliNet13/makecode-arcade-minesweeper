@@ -42,6 +42,7 @@ function A () {
         place_mines()
         minesSpawnedBool = true
     }
+    music.play(digSound, music.PlaybackMode.InBackground)
     howManyMines = 0
     findMines = sprites.create(assets.image`nothing`, SpriteKind.Player)
     findMines.z = -99999
@@ -170,6 +171,7 @@ let findMines: Sprite = null
 let howManyMines = 0
 let winCheckBool = false
 let minesSpawnedBool = false
+let digSound: music.SoundEffect = null
 let downSound: music.SoundEffect = null
 let realPlayerSprite: Sprite = null
 let visiblePlayerSprite: Sprite = null
@@ -188,6 +190,7 @@ game.setGameOverEffect(true, effects.none)
 game.setGameOverScoringType(game.ScoringType.None)
 downSound = music.createSoundEffect(WaveShape.Noise, 3757, 1, 255, 0, 1000, SoundExpressionEffect.Vibrato, InterpolationCurve.Logarithmic)
 let explodeSound = music.createSoundEffect(WaveShape.Noise, 3757, 3657, 255, 0, 1000, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic)
+digSound = music.createSoundEffect(WaveShape.Square, 1600, 1, 255, 0, 300, SoundExpressionEffect.None, InterpolationCurve.Curve)
 game.setGameOverPlayable(false, explodeSound, false)
 minesSpawnedBool = false
 allowedToPlay = true
