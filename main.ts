@@ -132,6 +132,12 @@ function place_mine () {
     currentMine = sprites.create(assets.image`nothing`, SpriteKind.Mine)
     tiles.placeOnRandomTile(currentMine, assets.tile`Covered tile`)
     currentMine.z = -99999
+    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+        if (currentMine.overlapsWith(value)) {
+            sprites.destroy(currentMine)
+            place_mine()
+        }
+    }
 }
 function B () {
     if (!(allowedToPlay)) {
