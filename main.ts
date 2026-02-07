@@ -139,6 +139,10 @@ function place_mine () {
             place_mine()
         }
     }
+    if (currentMine.overlapsWith(visiblePlayerSprite)) {
+        sprites.destroy(currentMine)
+        place_mine()
+    }
 }
 function B () {
     if (!(allowedToPlay)) {
