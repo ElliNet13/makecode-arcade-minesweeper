@@ -21,6 +21,7 @@ function Win_check () {
     if (!(winCheckBool)) {
         return
     }
+    info.setScore(maxInt)
     game.gameOver(true)
 }
 function is_in_game_area (location: tiles.Location) {
@@ -105,6 +106,9 @@ function A () {
             music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
             for (let value of sprites.allOfKind(SpriteKind.Mine)) {
                 pause(500)
+                if (tiles.tileAtLocationEquals(value.tilemapLocation(), assets.tile`flag`)) {
+                    info.changeScoreBy(100)
+                }
                 tiles.setTileAt(value.tilemapLocation(), assets.tile`mine`)
                 sprites.destroy(value)
                 music.play(downSound, music.PlaybackMode.InBackground)
@@ -114,7 +118,7 @@ function A () {
         }
     }
     sprites.destroy(findMines)
-    info.changeScoreBy(100)
+    info.changeScoreBy(50)
     Win_check()
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -174,6 +178,7 @@ let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
 let winCheckBool = false
+let maxInt = 0
 let minesSpawnedBool = false
 let digSound: music.SoundEffect = null
 let downSound: music.SoundEffect = null
@@ -199,6 +204,7 @@ game.setGameOverPlayable(false, explodeSound, false)
 minesSpawnedBool = false
 allowedToPlay = true
 info.setScore(0)
+maxInt = 100000
 forever(function () {
     if (is_in_game_area(realPlayerSprite.tilemapLocation())) {
         tiles.placeOnTile(visiblePlayerSprite, realPlayerSprite.tilemapLocation())
