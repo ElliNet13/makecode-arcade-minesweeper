@@ -50,7 +50,7 @@ function A () {
     tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
     for (let index = 0; index <= 8; index++) {
         if (index == 0) {
-            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
         } else if (index == 1) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
         } else if (index == 2) {
@@ -61,20 +61,25 @@ function A () {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
         } else if (index == 5) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
-            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
-        } else if (index == 6) {
-            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
             tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+        } else if (index == 6) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
         } else if (index == 7) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom))
-            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
-        } else if (index == 8) {
-            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Top))
             tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+        } else if (index == 8) {
+            tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
+            tiles.placeOnTile(findMines, findMines.tilemapLocation().getNeighboringLocation(CollisionDirection.Right))
         }
         for (let value of sprites.allOfKind(SpriteKind.Mine)) {
             if (findMines.overlapsWith(value)) {
-                howManyMines += 1
+                if (index == 0) {
+                    sprites.destroy(value)
+                    Mine_death()
+                } else {
+                    howManyMines += 1
+                }
             }
         }
     }
@@ -98,25 +103,6 @@ function A () {
         tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`8`)
     }
     tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
-    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
-        if (findMines.overlapsWith(value)) {
-            allowedToPlay = false
-            sprites.destroy(value)
-            tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`mine`)
-            music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
-            for (let value of sprites.allOfKind(SpriteKind.Mine)) {
-                pause(500)
-                if (tiles.tileAtLocationEquals(value.tilemapLocation(), assets.tile`flag`)) {
-                    info.changeScoreBy(100)
-                }
-                tiles.setTileAt(value.tilemapLocation(), assets.tile`mine`)
-                sprites.destroy(value)
-                music.play(downSound, music.PlaybackMode.InBackground)
-            }
-            pause(3500)
-            game.gameOver(false)
-        }
-    }
     sprites.destroy(findMines)
     info.changeScoreBy(50)
     Win_check()
@@ -174,6 +160,22 @@ browserEvents.MouseLeft.onEvent(browserEvents.MouseButtonEvent.Pressed, function
 browserEvents.MouseRight.onEvent(browserEvents.MouseButtonEvent.Pressed, function (x, y) {
     B()
 })
+function Mine_death () {
+    allowedToPlay = false
+    tiles.setTileAt(visiblePlayerSprite.tilemapLocation(), assets.tile`mine`)
+    music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
+    for (let value of sprites.allOfKind(SpriteKind.Mine)) {
+        pause(500)
+        if (tiles.tileAtLocationEquals(value.tilemapLocation(), assets.tile`flag`)) {
+            info.changeScoreBy(100)
+        }
+        tiles.setTileAt(value.tilemapLocation(), assets.tile`mine`)
+        sprites.destroy(value)
+        music.play(downSound, music.PlaybackMode.InBackground)
+    }
+    pause(3500)
+    game.gameOver(false)
+}
 let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
