@@ -13,10 +13,17 @@ function Win_check () {
     }
     for (let index = 0; index <= 3; index++) {
         for (let index2 = 0; index2 <= 5; index2++) {
+            isEveryLocationFlag = false
             if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2 + 2, index + 2), assets.tile`Covered tile`)) {
                 winCheckBool = false
             }
+            if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index), assets.tile`flag`)) {
+                isEveryLocationFlag = true
+            }
         }
+    }
+    if (isEveryLocationFlag) {
+        winCheckBool = false
     }
     if (!(winCheckBool)) {
         return
@@ -179,6 +186,7 @@ function Mine_death () {
 let currentMine: Sprite = null
 let findMines: Sprite = null
 let howManyMines = 0
+let isEveryLocationFlag = false
 let winCheckBool = false
 let maxInt = 0
 let minesSpawnedBool = false
