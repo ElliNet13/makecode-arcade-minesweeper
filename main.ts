@@ -54,8 +54,8 @@ function A () {
     howManyMines = 0
     findMines = sprites.create(assets.image`nothing`, SpriteKind.Player)
     findMines.z = -99999
-    tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Left))
     for (let index = 0; index <= 8; index++) {
+        tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
         if (index == 0) {
             tiles.placeOnTile(findMines, visiblePlayerSprite.tilemapLocation())
         } else if (index == 1) {
